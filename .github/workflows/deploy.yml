@@ -27,6 +27,8 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
+      - name: Build lib
+        run: pnpm run build
       - name: Install Website dependencies
         run: |
           cd playground

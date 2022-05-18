@@ -24,10 +24,10 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
-      - name: Test
-        run: pnpm test
       - name: Build
         run: pnpm run build
+      - name: Test
+        run: pnpm test
       - name: Release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
