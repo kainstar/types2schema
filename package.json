@@ -21,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kainstar/typescript-npm-package-template.git"
+    "url": "git+https://github.com/kainstar/types2schema.git"
   },
   "license": "MIT",
   "author": {
