@@ -1,6 +1,6 @@
 {
   "name": "types2schema",
-  "version": "0.0.1-development",
+  "version": "1.0.0",
   "description": "A Typescript transformer plugin to convert Typescript type to JSON Schema.",
   "main": "lib/index.js",
   "scripts": {
