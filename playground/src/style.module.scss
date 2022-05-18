@@ -1,0 +1,74 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.header {
+  padding: 10px 24px;
+  font-size: 20px;
+  line-height: 30px;
+  background-color: #0e0e0e;
+  color: #e0e0e0;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  display: flex;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 4px;
+  color: #eee;
+
+  &:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+}
+
+.main {
+  padding: 16px 0;
+  display: flex;
+  background-color: #1e1e1e;
+}
+
+.editorBox {
+  box-sizing: border-box;
+  height: calc(100vh - 50px);
+  flex-grow: 1;
+  border-right: 1px solid #ccc;
+}
+
+.help {
+  margin: 0 0 12px 0;
+  padding: 16px;
+  color: #e0e0e0;
+  font-size: 12px;
+  background-color: #333;
+
+  p {
+    margin: 0;
+  }
+}
+
+.editor {
+  height: 100%;
+}
+
+.output {
+  overflow: auto;
+  height: calc(100vh - 50px);
+  flex: 1 0 600px;
+  padding: 0 12px;
+  font-size: 12px;
+  box-sizing: border-box;
+  color: #e0e0e0;
+}

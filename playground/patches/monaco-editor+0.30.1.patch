@@ -1,0 +1,59 @@
+diff --git a/node_modules/monaco-editor/esm/vs/language/typescript/lib/typescriptServices.js b/node_modules/monaco-editor/esm/vs/language/typescript/lib/typescriptServices.js
+index 3cb005a..971d32f 100644
+--- a/node_modules/monaco-editor/esm/vs/language/typescript/lib/typescriptServices.js
++++ b/node_modules/monaco-editor/esm/vs/language/typescript/lib/typescriptServices.js
+@@ -160231,13 +160231,14 @@ var ts;
+ 
+ 
+ // MONACOCHANGE
+-export var createClassifier = ts.createClassifier;
+-export var createLanguageService = ts.createLanguageService;
+-export var displayPartsToString = ts.displayPartsToString;
+-export var EndOfLineState = ts.EndOfLineState;
+-export var flattenDiagnosticMessageText = ts.flattenDiagnosticMessageText;
+-export var IndentStyle = ts.IndentStyle;
+-export var ScriptKind = ts.ScriptKind;
+-export var ScriptTarget = ts.ScriptTarget;
+-export var TokenClass = ts.TokenClass;
++// 注释所有 esm 方式导出，让 worker 能拿到整个 TS
++// export var createClassifier = ts.createClassifier;
++// export var createLanguageService = ts.createLanguageService;
++// export var displayPartsToString = ts.displayPartsToString;
++// export var EndOfLineState = ts.EndOfLineState;
++// export var flattenDiagnosticMessageText = ts.flattenDiagnosticMessageText;
++// export var IndentStyle = ts.IndentStyle;
++// export var ScriptKind = ts.ScriptKind;
++// export var ScriptTarget = ts.ScriptTarget;
++// export var TokenClass = ts.TokenClass;
+ // END MONACOCHANGE
+diff --git a/node_modules/monaco-editor/esm/vs/language/typescript/ts.worker.js b/node_modules/monaco-editor/esm/vs/language/typescript/ts.worker.js
+index a785024..c8c8106 100644
+--- a/node_modules/monaco-editor/esm/vs/language/typescript/ts.worker.js
++++ b/node_modules/monaco-editor/esm/vs/language/typescript/ts.worker.js
+@@ -4,10 +4,12 @@
+  *--------------------------------------------------------------------------------------------*/
+ 'use strict';
+ import * as edworker from '../../editor/editor.worker.js';
+-import { TypeScriptWorker } from './tsWorker.js';
++import { create } from './tsWorker.js';
++
+ self.onmessage = function () {
+     // ignore the first message
+     edworker.initialize(function (ctx, createData) {
+-        return new TypeScriptWorker(ctx, createData);
++      // use create method for extends default TypeScriptWorker
++        return create(ctx, createData);
+     });
+ };
+diff --git a/node_modules/monaco-editor/esm/vs/language/typescript/tsWorker.js b/node_modules/monaco-editor/esm/vs/language/typescript/tsWorker.js
+index 927249b..752b365 100644
+--- a/node_modules/monaco-editor/esm/vs/language/typescript/tsWorker.js
++++ b/node_modules/monaco-editor/esm/vs/language/typescript/tsWorker.js
+@@ -52,6 +52,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
+ };
+ import * as ts from './lib/typescriptServices.js';
+ import { libFileMap } from './lib/lib.js';
++
+ /**
+  * Loading a default lib as a source file will mess up TS completely.
+  * So our strategy is to hide such a text model from TS.

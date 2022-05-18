@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM", "WebWorker"],
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "allowJs": false,
+    "strict": true,
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true
+  },
+  "include": ["src", "monaco-typescript-worker"]
+}

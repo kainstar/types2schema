@@ -1,0 +1,35 @@
+.title {
+  font-size: 20px;
+  margin: 0 0 20px;
+}
+
+.loading {
+  display: block;
+  margin: 80px auto;
+}
+
+.section {
+  padding: 20px 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+pre.code {
+  white-space: break-spaces;
+}
+
+.diagnostics {
+  color: #e40000;
+  list-style: none;
+  padding: 0;
+}
+
+.diagnostic {
+  border-left: 2px solid #e40000;
+  line-height: 1.8;
+  padding-left: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}

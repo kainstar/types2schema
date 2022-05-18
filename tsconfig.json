@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "noEmitOnError": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "files": ["./node_modules/ts-expose-internals/index.d.ts"],
+  "include": ["transformer", "index.ts", "tests", "debug"],
+  "exclude": ["node_modules"]
+}
