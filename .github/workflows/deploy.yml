@@ -1,11 +1,5 @@
 name: Deploy Playground
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - '.github/workflows/deploy.yml'
-      - 'playground/**'
+on: workflow_dispatch
 jobs:
   deploy:
     name: Build Docs
