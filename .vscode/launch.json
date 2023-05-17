@@ -7,12 +7,10 @@
     {
       "type": "node",
       "request": "launch",
-      "protocol": "inspector",
       "name": "Debug Transformer",
       "program": "${workspaceFolder}/node_modules/typescript/lib/tsc.js",
       "args": ["-p", "tsconfig.debug.json"],
       "sourceMaps": true,
-      "port": 9229,
       "skipFiles": ["<node_internals>/**", "node_modules/**"]
     },
     {

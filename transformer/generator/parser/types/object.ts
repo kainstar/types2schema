@@ -1,4 +1,4 @@
-import type { PropertyDeclaration, PropertySignature, Type, TypeChecker, ObjectType } from 'typescript';
+import type { Type, TypeChecker, ObjectType, MappedSymbol, PropertyDeclaration, PropertySignature } from 'typescript';
 
 import { BaseEntity } from '../../entity/base';
 import { ObjectEntity, ObjectProperty } from '../../entity/object';
@@ -31,9 +31,11 @@ export class ObjectParser implements IParser {
 
     const properties = propertySymbols.map((propertySymbol) => {
       const { name } = propertySymbol;
-      const declaration = getDeclarationFromSymbol(propertySymbol) as PropertySignature | PropertyDeclaration;
 
-      const required = !declaration.questionToken;
+      const declaration = (getDeclarationFromSymbol(propertySymbol) ??
+        (propertySymbol as MappedSymbol).mappedType.declaration) as PropertyDeclaration | PropertySignature;
+
+      const required = !declaration?.questionToken;
       const propertyType = this.typeChecker.getTypeOfSymbolAtLocation(propertySymbol, declaration);
       const propertyEntity = this.childParser.createEntity(propertyType);
       const propertyAnnotationEntity = wrapAnnotationBySymbol(propertyEntity, propertySymbol, this.ts);
